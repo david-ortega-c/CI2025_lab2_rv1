@@ -55,12 +55,12 @@ Each candidate tour is represented as a **permutation of city indices** (path re
    - Stop after a fixed number of generations.
 
 
-## Configuration Rationale by Problem Type
+## Configuration by Problem Type
 
 Different TSP problem sets (`g`, `r1`, and `r2`) exhibit distinct structural properties, so the algorithm uses different configurations to match their characteristics.
 
-| Problem Type | Matrix Properties | GA Configuration | Rationale |
-|---------------|------------------|------------------|------------|
-| **g** | - No negative values  <br> - Zero diagonal  <br> - Symmetric distances | **Inversion Mutation + Edge Recombination + Rank Selection** | Since the problem is **symmetric**, preserving edge relationships is crucial. Edge Recombination maintains adjacency information effectively, while Rank Selection provides stable selective pressure without relying on raw fitness values. Inversion mutation further refines local order. |
-| **r1** | - No negative values  <br> - Zero diagonal  <br> - **Asymmetric** distances | **Inversion Mutation + Ordered Crossover (OX2) + Tournament Selection** | Asymmetry means direction matters. OX2 efficiently preserves partial city sequences while allowing direction-dependent exploration. Tournament Selection accelerates convergence by consistently favoring fitter (shorter) tours. |
-| **r2** | - **Contains negative values**  <br> - **Non-zero diagonal**  <br> - **Asymmetric** distances | **Inversion Mutation + Ordered Crossover (OX1) + Tournament Selection** | For noisy or irregular matrices, OX1 helps maintain feasible permutations. Tournament Selection keeps selective pressure strong enough to counter instability caused by negative or inconsistent distances. |
+| Problem Type | Matrix Properties | GA Configuration |
+|---------------|------------------|------------------|
+| **g** | - No negative values  <br> - Zero diagonal  <br> - Symmetric distances | **Inversion Mutation + Edge Recombination + Rank Selection** |
+| **r1** | - No negative values  <br> - Zero diagonal  <br> - **Asymmetric** distances | **Inversion Mutation + Ordered Crossover (OX2) + Tournament Selection** | 
+| **r2** | - **Contains negative values**  <br> - **Non-zero diagonal**  <br> - **Asymmetric** distances | **Inversion Mutation + Ordered Crossover (OX1) + Tournament Selection** | 
