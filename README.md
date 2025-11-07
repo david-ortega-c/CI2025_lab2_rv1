@@ -26,8 +26,7 @@ Each candidate tour is represented as a **permutation of city indices** (path re
 
 4. **Parent Selection**
    - **Tournament selection** (`τ=3`): select a small subset and choose the fittest.
-   - **Rank-Based Selection**  
-  Individuals are first sorted by fitness (best to worst) and assigned ranks.  
+   - **Rank-Based Selection** : individuals are first sorted by fitness (best to worst) and assigned ranks.  
   Selection probabilities are then derived from these ranks — higher-ranked individuals have proportionally higher chances of being chosen, but all individuals retain a non-zero probability.  
 
 5. **Crossover Operators**
@@ -44,8 +43,6 @@ Each candidate tour is represented as a **permutation of city indices** (path re
    - **Order-Based Crossover (OX2)**  
       Selects a random subset of positions from the second parent and extracts the cities occupying those positions.  
       These selected cities are **removed** from the first parent’s tour, and then **reinserted** at the same positions as in the second parent, preserving their order.  
-
----
 
 6. **Mutation Operators**
    - **Insertion Mutation**  
